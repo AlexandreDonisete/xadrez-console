@@ -18,5 +18,7 @@ namespace xadrez_console.BoardLayer
             Board = board;
             QtyMoves = 0;
         }
+
+
     }
 }
