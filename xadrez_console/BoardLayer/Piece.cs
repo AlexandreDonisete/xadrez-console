@@ -4,21 +4,20 @@ using System.Text;
 
 namespace xadrez_console.Tabuleiro
 {
-    internal class Peca
+    internal class Piece
     {
-        public Posicao Posicao { get; set; }
-        public Cor Cor { get; protected set; }
+        public Position Posicao { get; set; }
+        public Color Cor { get; protected set; }
         public int qteMovimentos { get; protected set; }
-        public Tabuleiro Tab { get; protected set; }
+        public Board Tab { get; protected set; }
 
-        public Peca(Posicao posicao, Cor cor, Tabuleiro tab)
+        public Piece(Position posicao, Color cor, Board tab)
         {
             Posicao = posicao;
             Cor = cor;
             Tab = tab;
             qteMovimentos = 0;
         }
-
 
     }
 }

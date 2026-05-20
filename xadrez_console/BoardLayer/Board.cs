@@ -4,17 +4,22 @@ using System.Text;
 
 namespace xadrez_console.Tabuleiro
 {
-    internal class Tabuleiro
+    internal class Board
     {
         public int Linhas { get; set; }
         public int Colunas { get; set; }
-        private Peca[,] _pecas;
+        private Piece[,] _pecas;
 
-        public Tabuleiro(int linhas, int colunas)
+        public Board(int linhas, int colunas)
         {
             Linhas = linhas;
             Colunas = colunas;
-            _pecas = new Peca[linhas, colunas];
+            _pecas = new Piece[linhas, colunas];
+        }
+
+        public Piece GetPiece(int linha, int coluna)
+        {
+            return _pecas[linha, coluna];
         }
     }
 }

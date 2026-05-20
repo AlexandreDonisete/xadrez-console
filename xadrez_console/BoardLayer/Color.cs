@@ -4,7 +4,7 @@ using System.Text;
 
 namespace xadrez_console.Tabuleiro
 {
-    internal enum Cor : int
+    internal enum Color : int
     {
         Braca,
         Preta,
