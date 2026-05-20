@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace xadrez_console.Tabuleiro
+namespace xadrez_console.BoardLayer
 {
     internal enum Color : int
     {
-        Braca,
-        Preta,
-        Amarela,
-        Azul,
-        Vermelha,
-        Verde,
-        Laranja
+        White,
+        Black,
+        Yellow,
+        Blue,
+        Red,
+        Green,
+        Orange
     }
 }

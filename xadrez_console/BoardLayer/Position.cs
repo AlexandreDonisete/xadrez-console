@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace xadrez_console.Tabuleiro
+namespace xadrez_console.BoardLayer
 {
     internal class Position
     {
-        public int Linha { get; set; }
-        public int Coluna { get; set; }
-
-        public Position(int linha, int coluna)
+        public int Row { get; set; }
+        public int Column { get; set; }
+        
+        public Position(int row, int column)
         {
-            Linha = linha;
-            Coluna = coluna;
+            Row = row;
+            Column = column;
         }
 
         public override string ToString()
         {
-            return $"{Linha}, {Coluna}";
+            return $"{Row}, {Column}";
         }
     }
 }

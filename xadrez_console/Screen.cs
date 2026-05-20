@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using xadrez_console.Tabuleiro;
+using xadrez_console.BoardLayer;
 
 namespace xadrez_console
 {
@@ -9,9 +9,9 @@ namespace xadrez_console
     {
         public static void PrintBoard(Board board)
         {
-            for (int i = 0; i < board.Linhas; i++)
+            for (int i = 0; i < board.Rows; i++)
             {
-                for (int j = 0; j < board.Colunas; j++)
+                for (int j = 0; j < board.Columns; j++)
                 {
                     if (board.GetPiece(i, j) == null)
                     {

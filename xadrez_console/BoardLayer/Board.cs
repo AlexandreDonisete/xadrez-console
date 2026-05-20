@@ -1,25 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using xadrez_console.BoardLayer;
 
-namespace xadrez_console.Tabuleiro
+namespace xadrez_console.BoardLayer
 {
     internal class Board
     {
-        public int Linhas { get; set; }
-        public int Colunas { get; set; }
-        private Piece[,] _pecas;
+        public int Rows { get; set; }
+        public int Columns { get; set; }
+        private Piece[,] _pieces;
 
-        public Board(int linhas, int colunas)
+        public Board(int row, int column)
         {
-            Linhas = linhas;
-            Colunas = colunas;
-            _pecas = new Piece[linhas, colunas];
+            Rows = row;
+            Columns = column;
+            _pieces = new Piece[row, column];
         }
 
-        public Piece GetPiece(int linha, int coluna)
+        public Piece GetPiece(int row, int column)
         {
-            return _pecas[linha, coluna];
+            return _pieces[row, column];
+        }
+
+        public void PlacePiece(Piece piece, Position position)
+        {
+            _pieces[position.Row, position.Column] = piece;
+            piece.Position = position;
         }
     }
 }
