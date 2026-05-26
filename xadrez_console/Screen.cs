@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
 using xadrez_console.BoardLayer;
 using xadrez_console.ChessLayer;
@@ -12,7 +13,10 @@ namespace xadrez_console
         {
             for (int i = 0; i < board.Rows; i++)
             {
+                ConsoleColor aux = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write(8 - i + " ");
+                Console.ForegroundColor = aux;
                 for (int j = 0; j < board.Columns; j++)
                 {
                     if (board.GetPiece(i, j) == null)
@@ -22,15 +26,17 @@ namespace xadrez_console
                     else
                     {
                         PrintPiece(board.GetPiece(i, j));
-                        //Console.Write($"{board.GetPiece(i, j)} ");
                     }
                 }
                 Console.WriteLine();
             }
-            Console.Write("  A B C D E F G H");
+            ConsoleColor aux2 = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("  A B C D E F G H");
+            Console.ForegroundColor = aux2;
         }
 
-        static void PrintPiece(Piece piece)
+        public static void PrintPiece(Piece piece)
         {
             if (piece.Color.Equals(Color.White))
             {
@@ -45,64 +51,14 @@ namespace xadrez_console
             }
         }
 
-        public static void BuildBoard()
+        public static Position ReadChessPosition()
         {
-            Board board = new Board(8, 8);
+            string chessPosition = Console.ReadLine();
+            char column = chessPosition[0];
+            int row = int.Parse(chessPosition[1].ToString());
 
-            // PEÇAS PRETAS (RED) EM CIMA
-
-            // Torres
-            board.PlacePiece(new Rook(Color.Red, board), new Position(0, 0));
-            board.PlacePiece(new Rook(Color.Red, board), new Position(0, 7));
-
-            // Cavalos
-            board.PlacePiece(new Knight(Color.Red, board), new Position(0, 1));
-            board.PlacePiece(new Knight(Color.Red, board), new Position(0, 6));
-
-            // Bispos
-            board.PlacePiece(new Bishop(Color.Red, board), new Position(0, 2));
-            board.PlacePiece(new Bishop(Color.Red, board), new Position(0, 5));
-
-            // Rainha
-            board.PlacePiece(new Queen(Color.Red, board), new Position(0, 3));
-
-            // Rei
-            board.PlacePiece(new King(Color.Red, board), new Position(0, 4));
-
-            // Peões
-            for (int i = 0; i < 8; i++)
-            {
-                board.PlacePiece(new Pawn(Color.Red, board), new Position(1, i));
-            }
-
-
-            // PEÇAS BRANCAS EMBAIXO
-
-            // Torres
-            board.PlacePiece(new Rook(Color.White, board), new Position(7, 0));
-            board.PlacePiece(new Rook(Color.White, board), new Position(7, 7));
-
-            // Cavalos
-            board.PlacePiece(new Knight(Color.White, board), new Position(7, 1));
-            board.PlacePiece(new Knight(Color.White, board), new Position(7, 6));
-
-            // Bispos
-            board.PlacePiece(new Bishop(Color.White, board), new Position(7, 2));
-            board.PlacePiece(new Bishop(Color.White, board), new Position(7, 5));
-
-            // Rainha
-            board.PlacePiece(new Queen(Color.White, board), new Position(7, 3));
-
-            // Rei
-            board.PlacePiece(new King(Color.White, board), new Position(7, 4));
-
-            // Peões
-            for (int i = 0; i < 8; i++)
-            {
-                board.PlacePiece(new Pawn(Color.White, board), new Position(6, i));
-            }
-
-            PrintBoard(board);
+            return new ChessPosition(column, row).ToPosition();
         }
+
     }
 }

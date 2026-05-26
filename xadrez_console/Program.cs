@@ -8,7 +8,21 @@ namespace xadrez_console
         {
             try
             {
-                Screen.BuildBoard();
+                ChessMatch chessMatch = new ChessMatch();
+                while (!chessMatch.CheckMate)
+                {
+                    Console.Clear();
+                    Screen.PrintBoard(chessMatch.Board);
+
+                    Console.WriteLine();
+                    Console.Write("Origem: ");
+                    Position source = Screen.ReadChessPosition();
+                    Console.Write("Destino: ");
+                    Position target = Screen.ReadChessPosition();
+
+                    chessMatch.PerformChessMove(source, target);
+                }
+                Screen.PrintBoard(chessMatch.Board);
             }
             catch (BoardException e)
             {

@@ -36,7 +36,7 @@ namespace xadrez_console.BoardLayer
 
         public void PlacePiece(Piece piece, Position position)
         {
-            if(ThereIsAPiece(position))
+            if (ThereIsAPiece(position))
             {
                 throw new BoardException("There is a Piece in this position!");
             }
@@ -47,6 +47,21 @@ namespace xadrez_console.BoardLayer
                 piece.Position = position;
 
             }
+        }
+
+        public Piece RemovePiece(Position position)
+        {
+            if (GetPiece(position) == null)
+            {
+                return null;
+            }
+
+            Piece pieceRemoved = GetPiece(position);
+            pieceRemoved.Position = null;
+            _pieces[position.Row, position.Column] = null;
+
+            return pieceRemoved;
+
         }
 
         public bool PositionExists(Position pos)

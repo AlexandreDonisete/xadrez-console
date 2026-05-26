@@ -19,6 +19,9 @@ namespace xadrez_console.BoardLayer
             QtyMoves = 0;
         }
 
-
+        public void IncreaseMoveCount()
+        {
+            QtyMoves++;
+        }
     }
 }
