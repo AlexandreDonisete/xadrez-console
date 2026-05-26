@@ -8,15 +8,15 @@ namespace xadrez_console
         {
             try
             {
+                //Board board = new Board(8, 8);
 
-                Board board = new Board(8, 8);
+                //board.PlacePiece(new King(Color.White, board), new Position(0, 0));
+                //board.PlacePiece(new Rook(Color.White, board), new Position(1, 3));
+                //board.PlacePiece(new King(Color.White, board), new Position(2, 4));
 
-                board.PlacePiece(new King(Color.White, board), new Position(0, 0));
-                board.PlacePiece(new Rook(Color.White, board), new Position(1, 3));
-                board.PlacePiece(new King(Color.White, board), new Position(2, 4));
-
-                Screen.PrintBoard(board);
-
+                //Screen.PrintBoard(board);
+                ChessPosition position = new ChessPosition('a', 1);
+                Console.WriteLine(position.ToPosition());
             }
             catch (BoardException e)
             {
