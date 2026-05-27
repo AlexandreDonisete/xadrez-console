@@ -4,7 +4,7 @@ using System.Text;
 
 namespace xadrez_console.BoardLayer
 {
-    internal class Piece
+    internal abstract class Piece
     {
         public Position Position { get; set; }
         public Color Color { get; protected set; }
@@ -23,5 +23,7 @@ namespace xadrez_console.BoardLayer
         {
             QtyMoves++;
         }
+
+        public abstract bool[,] PossibleMoves();
     }
 }

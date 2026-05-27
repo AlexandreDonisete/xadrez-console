@@ -19,5 +19,11 @@ namespace xadrez_console.BoardLayer
         {
             return $"{Row}, {Column}";
         }
+
+        public void SetPositionValues(int row, int column)
+        {
+            Row = row;
+            Column = column;
+        }
     }
 }

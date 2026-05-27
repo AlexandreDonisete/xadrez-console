@@ -11,6 +11,11 @@ namespace xadrez_console.ChessLayer
         {
         }
 
+        public override bool[,] PossibleMoves()
+        {
+            throw new NotImplementedException();
+        }
+
         public override string ToString()
         {
             return "B";

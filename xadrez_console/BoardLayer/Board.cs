@@ -45,7 +45,6 @@ namespace xadrez_console.BoardLayer
             {
                 _pieces[position.Row, position.Column] = piece;
                 piece.Position = position;
-
             }
         }
 
