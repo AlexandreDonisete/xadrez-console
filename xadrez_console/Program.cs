@@ -11,23 +11,37 @@ namespace xadrez_console
                 ChessMatch chessMatch = new ChessMatch();
                 while (!chessMatch.CheckMate)
                 {
-                    Console.Clear();
-                    Screen.PrintBoard(chessMatch.Board);
+                    try
+                    {
+                        Console.Clear();
+                        Screen.PrintBoard(chessMatch.Board);
 
-                    Console.WriteLine();
-                    Console.Write("Origem: ");
-                    Position source = Screen.ReadChessPosition().ToPosition();
+                        Console.WriteLine("Turno: " + chessMatch.Turn);
+                        Console.WriteLine("Aguardando jogada: " + chessMatch.CurrentPlayer);
 
-                    bool[,] possiblesPositions = chessMatch.Board.GetPiece(source).PossibleMoves();
+                        Console.WriteLine();
+                        Console.Write("Origem: ");
+                        Position source = Screen.ReadChessPosition().ToPosition();
+                        chessMatch.ValidateSourcePosition(source);
 
-                    Console.Clear();
-                    Screen.PrintBoard(chessMatch.Board, possiblesPositions);
+                        bool[,] possiblesPositions = chessMatch.Board.GetPiece(source).PossibleMoves();
 
-                    Console.WriteLine();
-                    Console.Write("Destino: ");
-                    Position target = Screen.ReadChessPosition().ToPosition();
+                        Console.Clear();
+                        Screen.PrintBoard(chessMatch.Board, possiblesPositions);
 
-                    chessMatch.PerformChessMove(source, target);
+                        Console.WriteLine();
+
+                        Console.Write("Destino: ");
+                        Position target = Screen.ReadChessPosition().ToPosition();
+                        chessMatch.ValidadeTargetPosition(source, target);
+
+                        chessMatch.MakePlay(source, target);
+                    }
+                    catch (BoardException e)
+                    {
+                        Console.WriteLine(e.Message);
+                        Console.ReadLine();
+                    }
                 }
                 Screen.PrintBoard(chessMatch.Board);
             }
