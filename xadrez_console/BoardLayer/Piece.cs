@@ -24,6 +24,11 @@ namespace xadrez_console.BoardLayer
             QtyMoves++;
         }
 
+        public void DecreaseMoveCount()
+        {
+            QtyMoves--;
+        }
+
         public bool IsThereAnyPossibleMove()
         {
             bool[,] possibleMoves = PossibleMoves();
