@@ -40,7 +40,8 @@ namespace xadrez_console
                         Console.ReadLine();
                     }
                 }
-                Screen.PrintBoard(chessMatch.Board);
+                Console.Clear();
+                Screen.PrintMatch(chessMatch);
             }
             catch (BoardException e)
             {

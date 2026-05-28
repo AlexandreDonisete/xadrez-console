@@ -80,6 +80,12 @@ namespace xadrez_console.ChessLayer
                 Check = false;
             }
 
+            if (IsCheckMate(OpponentColor(CurrentPlayer)))
+            {
+                CheckMate = true;
+                return;
+            }
+
 
             Turn++;
             ChangePlayer();
@@ -167,7 +173,7 @@ namespace xadrez_console.ChessLayer
             {
                 if (piece is King)
                 {
-                    return (Piece)piece;
+                    return piece;
                 }
             }
             return null;
@@ -193,6 +199,39 @@ namespace xadrez_console.ChessLayer
             }
 
             return false;
+        }
+
+        public bool IsCheckMate(Color color)
+        {
+            if (!IsChecked(color))
+            {
+                return false;
+            }
+
+            foreach (Piece piece in PiecesInGameByColor(color))
+            {
+                bool[,] possibleMoves = piece.PossibleMoves();
+
+                for (int i = 0; i < Board.Rows; i++)
+                {
+                    for (int j = 0; j < Board.Columns; j++)
+                    {
+                        if (possibleMoves[i, j])
+                        {
+                            Position target = new Position(i, j);
+                            Position source = piece.Position;
+                            Piece capturedPiece = PerformChessMove(source, target);
+                            bool isCheck = IsChecked(color);
+                            UndoMove(source, target, capturedPiece);
+                            if (!isCheck)
+                            {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+            return true;
         }
 
         public void PlaceNewPiece(char column, int row, Piece piece)
