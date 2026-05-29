@@ -7,8 +7,10 @@ namespace xadrez_console.ChessLayer
 {
     internal class Pawn : Piece
     {
-        public Pawn(Color color, Board board) : base(color, board)
+        private ChessMatch ChessMatch;
+        public Pawn(Color color, Board board, ChessMatch chessMatch) : base(color, board)
         {
+            ChessMatch = chessMatch;
         }
 
         private bool HasOpponent(Position position)
@@ -46,6 +48,26 @@ namespace xadrez_console.ChessLayer
                 p.SetPositionValues(Position.Row - 1, Position.Column + 1);
                 if (Board.PositionExists(p) && HasOpponent(p))
                     possiblePositions[p.Row, p.Column] = true;
+
+                // #Jogada Especial EnPassant
+                if (Position.Row == 3)
+                {
+                    Position left = new Position(Position.Row, Position.Column - 1);
+                    if (Board.PositionExists(left) && HasOpponent(left) && Board.GetPiece(left) == ChessMatch.EnPassantVunerable)
+                    {
+                        possiblePositions[left.Row -1, left.Column] = true;
+                    }
+                }
+
+                if (Position.Row == 3)
+                {
+                    Position right = new Position(Position.Row, Position.Column + 1);
+                    if (Board.PositionExists(right) && HasOpponent(right) && Board.GetPiece(right) == ChessMatch.EnPassantVunerable)
+                    {
+                        possiblePositions[right.Row - 1, right.Column] = true;
+                    }
+                }
+
             }
             else
             {
@@ -64,6 +86,26 @@ namespace xadrez_console.ChessLayer
                 p.SetPositionValues(Position.Row + 1, Position.Column + 1);
                 if (Board.PositionExists(p) && HasOpponent(p))
                     possiblePositions[p.Row, p.Column] = true;
+            }
+
+            // #Jogada Especial EnPassant
+            if (Position.Row == 4)
+            {
+                Position left = new Position(Position.Row, Position.Column - 1);
+                if (Board.PositionExists(left) && HasOpponent(left) && Board.GetPiece(left) == ChessMatch.EnPassantVunerable)
+                {
+                    possiblePositions[left.Row + 1, left.Column] = true;
+                }
+
+            }
+
+            if (Position.Row == 4)
+            {
+                Position right = new Position(Position.Row, Position.Column + 1);
+                if (Board.PositionExists(right) && HasOpponent(right) && Board.GetPiece(right) == ChessMatch.EnPassantVunerable)
+                {
+                    possiblePositions[right.Row + 1, right.Column] = true;
+                }
             }
 
             return possiblePositions;
