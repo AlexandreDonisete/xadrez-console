@@ -45,6 +45,28 @@ namespace xadrez_console.ChessLayer
                 _capturedPieces.Add(capturedPiece);
             }
 
+            // #Jogada Especial Roque Pequeno
+            if (movedPiece is King && target.Column == source.Column + 2)
+            {
+                Position rookSource = new Position(source.Row, source.Column + 3);
+                Position rookTarget = new Position(source.Row, source.Column + 1);
+                Piece rook = Board.RemovePiece(rookSource);
+                rook.IncreaseMoveCount();
+                Board.PlacePiece(rook, rookTarget);
+
+            }
+
+            // #Jogada Especial Roque Grande
+            if (movedPiece is King && target.Column == source.Column - 2)
+            {
+                Position rookSource = new Position(source.Row, source.Column - 4);
+                Position rookTarget = new Position(source.Row, source.Column - 1);
+                Piece rook = Board.RemovePiece(rookSource);
+                rook.IncreaseMoveCount();
+                Board.PlacePiece(rook, rookTarget);
+
+            }
+
             return capturedPiece;
         }
 
@@ -58,6 +80,29 @@ namespace xadrez_console.ChessLayer
                 Board.PlacePiece(capturedPiece, target);
                 _capturedPieces.Remove(capturedPiece);
             }
+
+            // #Jogada Especial Roque Pequeno
+            if (movedPiece is King && target.Column == source.Column + 2)
+            {
+                Position rookSource = new Position(source.Row, source.Column + 3);
+                Position rookTarget = new Position(source.Row, source.Column + 1);
+                Piece rook = Board.RemovePiece(rookTarget);
+                rook.DecreaseMoveCount();
+                Board.PlacePiece(rook, rookSource);
+
+            }
+
+            // #Jogada Especial Roque Grande
+            if (movedPiece is King && target.Column == source.Column - 2)
+            {
+                Position rookSource = new Position(source.Row, source.Column - 4);
+                Position rookTarget = new Position(source.Row, source.Column - 1);
+                Piece rook = Board.RemovePiece(rookTarget);
+                rook.DecreaseMoveCount();
+                Board.PlacePiece(rook, rookSource);
+
+            }
+
             Board.PlacePiece(movedPiece, source);
         }
 
@@ -247,17 +292,17 @@ namespace xadrez_console.ChessLayer
             PlaceNewPiece('a', 1, new Rook(Color.White, Board));
             PlaceNewPiece('h', 1, new Rook(Color.White, Board));
 
-            //// Cavalos Brancos
-            PlaceNewPiece('b', 1, new Knight(Color.White, Board));
-            PlaceNewPiece('g', 1, new Knight(Color.White, Board));
+            ////// Cavalos Brancos
+            //PlaceNewPiece('b', 1, new Knight(Color.White, Board));
+            //PlaceNewPiece('g', 1, new Knight(Color.White, Board));
 
-            //// Bispos Brancos
-            PlaceNewPiece('c', 1, new Bishop(Color.White, Board));
-            PlaceNewPiece('f', 1, new Bishop(Color.White, Board));
+            ////// Bispos Brancos
+            //PlaceNewPiece('c', 1, new Bishop(Color.White, Board));
+            //PlaceNewPiece('f', 1, new Bishop(Color.White, Board));
 
-            //// Dama e Rei Brancos
-            PlaceNewPiece('d', 1, new Queen(Color.White, Board));
-            PlaceNewPiece('e', 1, new King(Color.White, Board));
+            ////// Dama e Rei Brancos
+            //PlaceNewPiece('d', 1, new Queen(Color.White, Board));
+            PlaceNewPiece('e', 1, new King(Color.White, Board, this));
 
             //// Peões Brancos
             for (char i = 'a'; i <= 'h'; i++)
@@ -269,17 +314,17 @@ namespace xadrez_console.ChessLayer
             PlaceNewPiece('a', 8, new Rook(Color.Red, Board));
             PlaceNewPiece('h', 8, new Rook(Color.Red, Board));
 
-            //// Cavalos Pretos
-            PlaceNewPiece('b', 8, new Knight(Color.Red, Board));
-            PlaceNewPiece('g', 8, new Knight(Color.Red, Board));
+            ////// Cavalos Pretos
+            //PlaceNewPiece('b', 8, new Knight(Color.Red, Board));
+            //PlaceNewPiece('g', 8, new Knight(Color.Red, Board));
 
-            //// Bispos Pretos
-            PlaceNewPiece('c', 8, new Bishop(Color.Red, Board));
-            PlaceNewPiece('f', 8, new Bishop(Color.Red, Board));
+            ////// Bispos Pretos
+            //PlaceNewPiece('c', 8, new Bishop(Color.Red, Board));
+            //PlaceNewPiece('f', 8, new Bishop(Color.Red, Board));
 
             //// Dama e Rei Pretos
             PlaceNewPiece('d', 8, new Queen(Color.Red, Board));
-            PlaceNewPiece('e', 8, new King(Color.Red, Board));
+            PlaceNewPiece('e', 8, new King(Color.Red, Board, this));
 
             //// Peões Pretos
             for (char i = 'a'; i <= 'h'; i++)

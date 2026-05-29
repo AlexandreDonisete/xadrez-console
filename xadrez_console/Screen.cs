@@ -28,7 +28,7 @@ namespace xadrez_console
             else
             {
                 Console.WriteLine("XEQUE MATE!");
-                Console.WriteLine($"VENCEDOR: {chessMatch.CurrentPlayer}" );
+                Console.WriteLine($"VENCEDOR: {chessMatch.CurrentPlayer}");
             }
 
         }
@@ -134,7 +134,7 @@ namespace xadrez_console
 
         public static ChessPosition ReadChessPosition()
         {
-            string chessPosition = Console.ReadLine();
+            string chessPosition = Console.ReadLine().Trim();
             char column = chessPosition[0];
             int row = int.Parse(chessPosition[1].ToString());
 
