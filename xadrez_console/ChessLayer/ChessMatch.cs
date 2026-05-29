@@ -125,17 +125,18 @@ namespace xadrez_console.ChessLayer
             }
 
             // #Jogava Especial EnPassant
-            if(movedPiece is Pawn)
+            if (movedPiece is Pawn)
             {
-                if(source.Column != target.Column && capturedPiece == EnPassantVunerable)
+                if (source.Column != target.Column && capturedPiece == EnPassantVunerable)
                 {
                     Piece pawn = Board.RemovePiece(target);
                     Position positionPawn;
 
-                    if(pawn.Color == Color.White)
+                    if (pawn.Color == Color.White)
                     {
                         positionPawn = new Position(3, target.Column);
-                    } else
+                    }
+                    else
                     {
                         positionPawn = new Position(4, target.Column);
                     }
@@ -156,6 +157,22 @@ namespace xadrez_console.ChessLayer
                 throw new BoardException("Você não pode se colocar em xeque!");
             }
 
+            Piece piece = Board.GetPiece(target);
+
+            // #Jogada Especial Promoção
+
+            if (piece is Pawn)
+            {
+                if (piece.Color == Color.White && piece.Position.Row == 0 || piece.Color != Color.White && piece.Position.Row == 7)
+                {
+                    piece = Board.RemovePiece(target);
+                    _capturedPieces.Remove(piece);
+                    Piece promotedPiece = new Queen(piece.Color, Board);
+                    Board.PlacePiece(promotedPiece, target);
+                    _pieces.Add(promotedPiece);
+                }
+            }
+
             if (IsChecked(OpponentColor(CurrentPlayer)))
             {
                 Check = true;
@@ -174,8 +191,6 @@ namespace xadrez_console.ChessLayer
 
             Turn++;
             ChangePlayer();
-
-            Piece piece = Board.GetPiece(target);
 
             // #Jogada Especial EnPassant
             if (piece is Pawn && (target.Row == source.Row - 2 || target.Row == source.Row + 2))

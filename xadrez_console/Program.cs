@@ -15,7 +15,7 @@ namespace xadrez_console
                     {
                         Console.Clear();
                         Screen.PrintMatch(chessMatch);
-                        
+
                         Console.WriteLine();
                         Console.Write("Origem: ");
                         Position source = Screen.ReadChessPosition().ToPosition();
@@ -39,11 +39,19 @@ namespace xadrez_console
                         Console.WriteLine(e.Message);
                         Console.ReadLine();
                     }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
                 }
                 Console.Clear();
                 Screen.PrintMatch(chessMatch);
             }
             catch (BoardException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
