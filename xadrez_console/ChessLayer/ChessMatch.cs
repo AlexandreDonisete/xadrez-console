@@ -243,63 +243,63 @@ namespace xadrez_console.ChessLayer
         private void BuildBoardWithPieces()
         {
 
-            ////// Torres Brancas
-            //PlaceNewPiece('a', 1, new Rook(Color.White, Board));
-            //PlaceNewPiece('h', 1, new Rook(Color.White, Board));
+            //// Torres Brancas
+            PlaceNewPiece('a', 1, new Rook(Color.White, Board));
+            PlaceNewPiece('h', 1, new Rook(Color.White, Board));
 
-            ////// Cavalos Brancos
-            //PlaceNewPiece('b', 1, new Knight(Color.White, Board));
-            //PlaceNewPiece('g', 1, new Knight(Color.White, Board));
+            //// Cavalos Brancos
+            PlaceNewPiece('b', 1, new Knight(Color.White, Board));
+            PlaceNewPiece('g', 1, new Knight(Color.White, Board));
 
-            ////// Bispos Brancos
-            //PlaceNewPiece('c', 1, new Bishop(Color.White, Board));
-            //PlaceNewPiece('f', 1, new Bishop(Color.White, Board));
+            //// Bispos Brancos
+            PlaceNewPiece('c', 1, new Bishop(Color.White, Board));
+            PlaceNewPiece('f', 1, new Bishop(Color.White, Board));
 
-            ////// Dama e Rei Brancos
-            //PlaceNewPiece('d', 1, new Queen(Color.White, Board));
-            //PlaceNewPiece('e', 1, new King(Color.White, Board));
+            //// Dama e Rei Brancos
+            PlaceNewPiece('d', 1, new Queen(Color.White, Board));
+            PlaceNewPiece('e', 1, new King(Color.White, Board));
 
-            ////// Peões Brancos
-            //for (char i = 'a'; i <= 'h'; i++)
-            //{
-            //    PlaceNewPiece(i, 2, new Pawn(Color.White, Board));
-            //}
+            //// Peões Brancos
+            for (char i = 'a'; i <= 'h'; i++)
+            {
+                PlaceNewPiece(i, 2, new Pawn(Color.White, Board));
+            }
 
-            ////// Torres Pretas
-            //PlaceNewPiece('a', 8, new Rook(Color.Red, Board));
-            //PlaceNewPiece('h', 8, new Rook(Color.Red, Board));
+            //// Torres Pretas
+            PlaceNewPiece('a', 8, new Rook(Color.Red, Board));
+            PlaceNewPiece('h', 8, new Rook(Color.Red, Board));
 
-            ////// Cavalos Pretos
-            //PlaceNewPiece('b', 8, new Knight(Color.Red, Board));
-            //PlaceNewPiece('g', 8, new Knight(Color.Red, Board));
+            //// Cavalos Pretos
+            PlaceNewPiece('b', 8, new Knight(Color.Red, Board));
+            PlaceNewPiece('g', 8, new Knight(Color.Red, Board));
 
-            ////// Bispos Pretos
-            //PlaceNewPiece('c', 8, new Bishop(Color.Red, Board));
-            //PlaceNewPiece('f', 8, new Bishop(Color.Red, Board));
+            //// Bispos Pretos
+            PlaceNewPiece('c', 8, new Bishop(Color.Red, Board));
+            PlaceNewPiece('f', 8, new Bishop(Color.Red, Board));
 
-            ////// Dama e Rei Pretos
-            //PlaceNewPiece('d', 8, new Queen(Color.Red, Board));
-            //PlaceNewPiece('e', 8, new King(Color.Red, Board));
+            //// Dama e Rei Pretos
+            PlaceNewPiece('d', 8, new Queen(Color.Red, Board));
+            PlaceNewPiece('e', 8, new King(Color.Red, Board));
 
-            ////// Peões Pretos
-            //for (char i = 'a'; i <= 'h'; i++)
-            //{
-            //    PlaceNewPiece(i, 7, new Pawn(Color.Red, Board));
-            //}
+            //// Peões Pretos
+            for (char i = 'a'; i <= 'h'; i++)
+            {
+                PlaceNewPiece(i, 7, new Pawn(Color.Red, Board));
+            }
 
-            PlaceNewPiece('c', 1, new Rook(Color.White, Board));
-            PlaceNewPiece('c', 2, new Rook(Color.White, Board));
-            PlaceNewPiece('d', 2, new Rook(Color.White, Board));
-            PlaceNewPiece('e', 2, new Rook(Color.White, Board));
-            PlaceNewPiece('e', 1, new Rook(Color.White, Board));
-            PlaceNewPiece('d', 1, new King(Color.White, Board));
+            //PlaceNewPiece('c', 1, new Rook(Color.White, Board));
+            //PlaceNewPiece('c', 2, new Rook(Color.White, Board));
+            //PlaceNewPiece('d', 2, new Rook(Color.White, Board));
+            //PlaceNewPiece('e', 2, new Rook(Color.White, Board));
+            //PlaceNewPiece('e', 1, new Rook(Color.White, Board));
+            //PlaceNewPiece('d', 1, new King(Color.White, Board));
 
-            PlaceNewPiece('c', 8, new Rook(Color.Red, Board));
-            PlaceNewPiece('c', 7, new Rook(Color.Red, Board));
-            PlaceNewPiece('d', 7, new Rook(Color.Red, Board));
-            PlaceNewPiece('e', 7, new Rook(Color.Red, Board));
-            PlaceNewPiece('e', 8, new Rook(Color.Red, Board));
-            PlaceNewPiece('d', 8, new King(Color.Red, Board));
+            //PlaceNewPiece('c', 8, new Rook(Color.Red, Board));
+            //PlaceNewPiece('c', 7, new Rook(Color.Red, Board));
+            //PlaceNewPiece('d', 7, new Rook(Color.Red, Board));
+            //PlaceNewPiece('e', 7, new Knight(Color.Red, Board));
+            //PlaceNewPiece('e', 8, new Bishop(Color.Red, Board));
+            //PlaceNewPiece('d', 8, new King(Color.Red, Board));
 
 
         }
